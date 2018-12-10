@@ -16,15 +16,12 @@ class DeDupePipeline(object):
 
     def process_item(self, item, spider):
         if item['email_address'] in self.email_addresses_seen:
-            raise DropItem("Duplicate item found: %s" % item)
-        else:
-            self.email_addresses_seen.add(item['email_address'])
-
-
-
+            raise DropItem("Duplicate email item found: %s" % item)
         if item['phone_number'] in self.phone_numbers_seen:
-            raise DropItem("Duplicate item found: %s" % item)
-        else:
+            raise DropItem("Duplicate phone item found: %s" % item)
+        if item['email_address'] not in self.email_addresses_seen:
+            self.email_addresses_seen.add(item['email_address'])
+            return item
+        if item['phone_number'] not in self.phone_numbers_seen:
             self.phone_numbers_seen.add(item['phone_number'])
-
-        return item
+            return item
