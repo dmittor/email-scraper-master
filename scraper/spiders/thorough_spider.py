@@ -29,7 +29,8 @@ class ThoroughSpider(scrapy.Spider):
     meta = {'dont_redirect': True, "handle_httpstatus_list": [301, 302, 303]}
     def __init__(self, domain=None, subdomain_exclusions=[], crawl_js=False):
 
-
+        if 'www.' in domain:
+            domain = domain.replace('www.', '')
 
         self.allowed_domains = [domain]
         start_url = "http://" + domain
@@ -70,6 +71,11 @@ class ThoroughSpider(scrapy.Spider):
         for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
             item = EmailAddressItem()
             item['email_address'] = found_address
+            yield item
+
+        for found_phone in selector.re('\+\d{2}\s?0?\d{10}'):
+            item = PhoneNumberItem()
+            item['phone_number'] = found_phone
             yield item
 
         for url in all_urls:
