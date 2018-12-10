@@ -1,8 +1,13 @@
 # implementation of the thorough spider
 
 import re
-from urllib.parse import urljoin, urlparse
+try:
+    from urllib.parse import urljoin, urlparse
+except ImportError:
+     from urlparse import urljoin, urlparse
+
 import scrapy
+
 from scrapy.linkextractors import IGNORED_EXTENSIONS
 from scraper.items import EmailAddressItem
 
