@@ -26,7 +26,7 @@ def get_extension_ignore_url_params(url):
 
 class ThoroughSpider(scrapy.Spider):
     name = "spider"
-
+    meta = {'dont_redirect': True, "handle_httpstatus_list": [301, 302, 303]}
     def __init__(self, domain=None, subdomain_exclusions=[], crawl_js=False):
 
 

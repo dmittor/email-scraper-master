@@ -54,7 +54,6 @@ ROBOTSTXT_OBEY = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'scraper.middlewares.SubdomainBlockerMiddleware': 100,
-    'scraper.middlewares.CustomDownloaderMiddleware': 543,
 }
 
 # Enable or disable extensions
