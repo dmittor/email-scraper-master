@@ -28,6 +28,10 @@ class ThoroughSpider(scrapy.Spider):
     name = "spider"
 
     def __init__(self, domain=None, subdomain_exclusions=[], crawl_js=False):
+
+
+        if 'www.' in domain:
+                domain = domain.replate('www.','')
         self.allowed_domains = [domain]
         start_url = "http://" + domain
 
