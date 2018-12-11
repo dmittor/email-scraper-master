@@ -73,7 +73,7 @@ class ThoroughSpider(scrapy.Spider):
             item['field'] = found_address
             yield item
 
-        for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]\d{4})'):
+        for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s\d{3}[-\.\s]\d{4})'):
             item2 =  EmailAddressItem()
             item2['field'] = found_phone
             yield item2
