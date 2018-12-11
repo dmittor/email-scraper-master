@@ -74,7 +74,7 @@ class ThoroughSpider(scrapy.Spider):
             item = EmailAddressItem()
             item['field'] = found_address
             item['source_url'] = response.url
-            item['header'] = response.header
+            item['headers'] = response.headers
             item['body'] = response.body
             yield item
 
@@ -82,7 +82,7 @@ class ThoroughSpider(scrapy.Spider):
             item2 =  EmailAddressItem()
             item2['field'] = found_phone
             item2['source_url'] = response.url
-            item2['header'] = response.header
+            item2['headers'] = response.headers
             item2['body'] = response.body
             yield item2
 
