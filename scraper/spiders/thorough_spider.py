@@ -69,10 +69,14 @@ class ThoroughSpider(scrapy.Spider):
         all_urls.update(selector.re('"(\/[-\w\d\/\._#?]+?)"'))
 
         for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
-            print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + found_address)
+            item = EmailAddressItem()
+            item['email_address'] = found_address
+            yield item
 
         for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]\d{4}|\d{3}[-\.\s]\d{4})'):
-            print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'+found_phone)
+            item = EmailAddressItem()
+            item['phone_number'] = found_phone
+            yield item
 
         for url in all_urls:
             # ignore commonly ignored binary extensions - might want to put PDFs back in list and

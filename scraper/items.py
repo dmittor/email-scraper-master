@@ -10,7 +10,6 @@ import scrapy
 
 class EmailAddressItem(scrapy.Item):
     email_address = scrapy.Field()
-
-
-class PhoneNumberItem(scrapy.Item):
     phone_number = scrapy.Field()
+
+
