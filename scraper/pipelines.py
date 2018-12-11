@@ -11,10 +11,11 @@ from scrapy.exceptions import DropItem
 
 class DeDupePipeline(object):
     def __init__(self):
+        self.email_addresses_seen = set()
 
     def process_item(self, item, spider):
         if item['email_address'] in self.email_addresses_seen:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem("Duplicate email address found: %s" % item)
         else:
             self.email_addresses_seen.add(item['email_address'])
             return item

@@ -74,9 +74,7 @@ class ThoroughSpider(scrapy.Spider):
             yield item
 
         for found_phone in selector.re('\+\d{2}\s?0?\d{10}'):
-            item2 = PhoneNumberItem()
-            item2['phone_number'] = found_phone
-            yield item2
+            print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'+found_phone)
 
         for url in all_urls:
             # ignore commonly ignored binary extensions - might want to put PDFs back in list and
