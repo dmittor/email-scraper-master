@@ -12,7 +12,7 @@ class EmailAddressItem(scrapy.Item):
     field = scrapy.Field()
     source_url = scrapy.Field()
     headers = scrapy.Field()
-    body = scrapy.Field()
+
 
 
 

@@ -75,7 +75,7 @@ class ThoroughSpider(scrapy.Spider):
             item['field'] = found_address
             item['source_url'] = response.url
             item['headers'] = response.headers
-            item['body'] = response.body
+
             yield item
 
         for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s\d{3}[-\.\s]\d{4})'):
@@ -83,7 +83,7 @@ class ThoroughSpider(scrapy.Spider):
             item2['field'] = found_phone
             item2['source_url'] = response.url
             item2['headers'] = response.headers
-            item2['body'] = response.body
+
             yield item2
 
         for url in all_urls:
