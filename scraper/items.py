@@ -11,7 +11,8 @@ import scrapy
 class EmailAddressItem(scrapy.Item):
     field = scrapy.Field()
     source_url = scrapy.Field()
-    headers = scrapy.Field()
+    title = scrapy.Field()
+    name = scrapy.Field()
 
 
 

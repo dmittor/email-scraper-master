@@ -74,7 +74,8 @@ class ThoroughSpider(scrapy.Spider):
             item = EmailAddressItem()
             item['field'] = found_address
             item['source_url'] = response.url
-            item['headers'] = response.headers
+            item['title'] = response.xpath('//title/text()').extract()
+            item['name'] = response.xpath('//ul/li/b[starts-with(text(),"Name")]/../descendant::text()')
 
             yield item
 
@@ -82,7 +83,8 @@ class ThoroughSpider(scrapy.Spider):
             item2 =  EmailAddressItem()
             item2['field'] = found_phone
             item2['source_url'] = response.url
-            item2['headers'] = response.headers
+            item['title'] = response.xpath('//title/text()').extract()
+            item['name'] = response.xpath('//ul/li/b[starts-with(text(),"Name")]/../descendant::text()')
 
             yield item2
 
