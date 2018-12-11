@@ -9,7 +9,8 @@ import scrapy
 
 
 class EmailAddressItem(scrapy.Item):
-    email_address = scrapy.Field()
-    phone_number = scrapy.Field()
+    field = scrapy.Field()
+
+
 
 
