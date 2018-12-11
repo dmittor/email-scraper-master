@@ -10,6 +10,7 @@ import scrapy
 
 class EmailAddressItem(scrapy.Item):
     field = scrapy.Field()
+    source_url = scrapy.Field()
 
 
 

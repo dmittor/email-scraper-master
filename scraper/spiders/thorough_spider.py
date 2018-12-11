@@ -68,14 +68,18 @@ class ThoroughSpider(scrapy.Spider):
         # into <a> elements but rather as clickable span elements - e.g. jana.com
         all_urls.update(selector.re('"(\/[-\w\d\/\._#?]+?)"'))
 
+
+
         for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
             item = EmailAddressItem()
             item['field'] = found_address
+            item['source_url'] = response.url
             yield item
 
         for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s\d{3}[-\.\s]\d{4})'):
             item2 =  EmailAddressItem()
             item2['field'] = found_phone
+            item2['source_url'] = response.url
             yield item2
 
         for url in all_urls:
