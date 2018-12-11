@@ -69,9 +69,7 @@ class ThoroughSpider(scrapy.Spider):
         all_urls.update(selector.re('"(\/[-\w\d\/\._#?]+?)"'))
 
         for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
-            item = EmailAddressItem()
-            item['email_address'] = found_address
-            yield item
+            print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + found_address)
 
         for found_phone in selector.re('\+\d{2}\s?0?\d{10}'):
             print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'+found_phone)
