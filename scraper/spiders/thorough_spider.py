@@ -71,7 +71,7 @@ class ThoroughSpider(scrapy.Spider):
         for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
             print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + found_address)
 
-        for found_phone in selector.re('\+\d{2}\s?0?\d{10}'):
+        for found_phone in selector.re('(\d\.?|\+\d\.?)?\(?\d{3}(\.| |-|\))\d{3}(\.| |-)\d{4}'):
             print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'+found_phone)
 
         for url in all_urls:
