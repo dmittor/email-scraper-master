@@ -72,6 +72,7 @@ class ThoroughSpider(scrapy.Spider):
             item = EmailAddressItem()
             item['field'] = found_address
             item['source_url'] = response.url
+            item['title'] = response.xpath('//title/text()').extract()
             yield item
 
 
