@@ -75,16 +75,9 @@ class ThoroughSpider(scrapy.Spider):
             item['field'] = found_address
             item['source_url'] = response.url
             item['title'] = response.xpath('//title/text()').extract()
-
             yield item
 
-        for found_phone in selector.re('(\d{3}[-\.\s]\d{3}[-\.\s]\d{4}|\(\d{3}\)\s\d{3}[-\.\s]\d{4})'):
-            item2 =  EmailAddressItem()
-            item2['field'] = found_phone
-            item2['source_url'] = response.url
-            item2['title'] = response.xpath('//title/text()').extract()
 
-            yield item2
 
         for url in all_urls:
             # ignore commonly ignored binary extensions - might want to put PDFs back in list and
