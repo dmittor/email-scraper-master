@@ -68,13 +68,13 @@ class ThoroughSpider(scrapy.Spider):
         # into <a> elements but rather as clickable span elements - e.g. jana.com
         all_urls.update(selector.re('"(\/[-\w\d\/\._#?]+?)"'))
 
-
-
-        for found_address in selector.re('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'):
+        for tr in sel.xpath('//table[@class="main entry"]/tr'):
             item = EmailAddressItem()
-            item['field'] = found_address
-            item['source_url'] = response.url
-            item['title'] = response.xpath('//title/text()').extract()
+            item['companyName'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
+            item['contactName'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
+            item['category'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
+            item['phone'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
+            item['website'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
             yield item
 
 
