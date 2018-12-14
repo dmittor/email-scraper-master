@@ -71,10 +71,10 @@ class ThoroughSpider(scrapy.Spider):
         for tr in selector.xpath('//table[@class="main entry"]/tr'):
             item = EmailAddressItem()
             item['companyName'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
-            item['contactName'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
-            item['category'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
-            item['phone'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
-            item['website'] = tr.xpath('td[1]//a/text()').extract()[0].strip()
+            item['contactName'] = tr.xpath('td[0]//a/text()').extract()[0].strip()
+            item['category'] = tr.xpath('td[2]//a/text()').extract()[0].strip()
+            item['phone'] = tr.xpath('td[4]//a/text()').extract()[0].strip()
+            item['website'] = tr.xpath('td[6]//a/text()').extract()[0].strip()
             yield item
 
 
