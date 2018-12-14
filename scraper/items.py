@@ -9,9 +9,11 @@ import scrapy
 
 
 class EmailAddressItem(scrapy.Item):
-    field = scrapy.Field()
-    source_url = scrapy.Field()
-    title = scrapy.Field()
+    companyName = scrapy.Field()
+    contactName = scrapy.Field()
+    category = scrapy.Field()
+    phone = scrapy.Field()
+    website = scrapy.Field()
 
 
 

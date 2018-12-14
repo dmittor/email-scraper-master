@@ -15,8 +15,8 @@ class DeDupePipeline(object):
 
 
     def process_item(self, item, spider):
-        if item['field'] in self.email_addresses_seen:
+        if item['website'] in self.email_addresses_seen:
             raise DropItem("Duplicate email address found: %s" % item)
         else:
-            self.email_addresses_seen.add(item['field'])
+            self.email_addresses_seen.add(item['website'])
             return item
